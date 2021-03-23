@@ -102,7 +102,22 @@
 
 
 
-const userName = prompt('enter name');
+// const userName = prompt('enter name');
+//
+// switch (userName) {
+//   case 'admin':
+//     alert('Hello admin');
+//     break;
+//   case 'Karina':
+//     alert('Meow');
+//     alert('Hello baby');
+//     break;
+//   case 'Dima':
+//     alert('Hello man');
+//     break;
+//   default:
+//     alert("I don't know you");
+// }
 
 switch (userName) {
   case 'admin':
