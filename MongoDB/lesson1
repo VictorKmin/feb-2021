@@ -1,0 +1,151 @@
+db.getCollection('teacher').insert({
+        model: "Yamaha",
+        year: 2008,
+        price: 3000
+    })
+
+db.getCollection('teacher').find({payment: 2500})
+
+db.getCollection('teacher').find({
+    payment: 2500,
+    class_curator: 6
+})
+
+db.getCollection('teacher').find(
+    { payment: 2500 },
+    {
+        name: true,
+        payment: 1,
+        _id: 0
+    }
+)
+
+db.getCollection('teacher').find({
+    $or: [
+        { payment: 2500 },
+        { payment: 2200 },
+        { class_curator: 8 }
+    ]
+})
+
+
+db.getCollection('teacher').find({
+    $and: [
+        { payment: 2500 },
+        { class_curator: 6 }
+    ]
+})
+
+db.getCollection('teacher').find({
+        name: /^o/i // o%
+    })
+
+db.getCollection('teacher').find({
+        name: /vna$/i // %vna
+    })
+
+db.getCollection('teacher').find({
+        name: /.*iv.*/i // %iv%
+    })
+
+db.getCollection('teacher')
+    .find({})
+    .sort({ payment: 1, name: -1 })
+
+db.getCollection('teacher')
+    .find({})
+    .sort({class_curator: 1})
+    .limit(3)
+    .skip(3)
+
+db.getCollection('teacher').find({
+    payment: {
+//         $gte: 2500 // >=
+//         $lte: 2500 // <=
+//         $gt: 2500 // >
+//         $lt: 2500 // <
+//         $ne: 2500 // !=
+//         $eq: 2500 // ==
+    }
+})
+
+
+db.getCollection('teacher').find({
+    class_curator: {
+        $in: [7, 8, 9]
+    }
+})
+
+db.getCollection('teacher').find({
+    class_curator: {
+        $nin: [7, 8, 9]
+    }
+})
+
+db.getCollection('teacher').find({
+    class_curator: {
+        $not: {
+            $in: [7, 8 ,9]
+        }
+    }
+})
+
+db.getCollection('teacher').update(
+    {}, // FIND
+    {}, // UPDATE
+    {}  // OPTIONS
+)
+
+
+db.getCollection('teacher').update(
+    { _id: ObjectId("60ca316b5b8e5af49bd5f4a1") },
+    { payment: 3000 }
+)
+
+db.getCollection('teacher').update(
+    { payment: { $lte: 2500 } },
+    { $set: { cars: [ "Zaz", "Honda" ] } }
+)
+
+db.getCollection('teacher').update(
+    { payment: { $lte: 2500 } },
+    { $set: { cars: [ "Volvo", "Mazda" ] } },
+    { multi: true }
+)
+
+db.getCollection('teacher').updateMany(
+    { payment: { $lte: 2300 } },
+    { $set: { payment: 3300 } }
+)
+
+
+db.getCollection('teacher').find({ cars: { $size: 3 } })
+
+db.getCollection('teacher').find({ cars: { $exists: false } })
+
+
+db.getCollection('teacher').updateMany(
+    { cars: { $size: 3 } },
+    { $set: { 'cars.$[]': 'bicycle' } }
+)
+
+
+db.getCollection('teacher').updateMany(
+    { cars: { $size: 1 } },
+    { $set: { 'cars.$[].model': 'XC90' } }
+)
+
+db.getCollection('teacher').find({ 'cars': "BMW" })
+
+db.getCollection('teacher').find({ 'cars.model': "XC90" })
+
+db.getCollection('teacher').find({ 'cars.1': "BMW" })
+
+
+db.getCollection('teacher').remove({ model: "Yamaha" })
+
+
+
+
+// IMPORT JSON TO MONGO
+mongoimport --db DZ --collection rest --file restaurants.json
