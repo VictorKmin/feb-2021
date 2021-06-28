@@ -15,3 +15,12 @@ app.use('/users', userRouter);
 app.listen(3000, () => {
   console.log('App listen 3000');
 });
+
+// const fs = require('fs');
+// const utils = require('util');
+//
+// const readFilePromise = utils.promisify(fs.readFile);
+//
+// readFilePromise('./dataBase/users.js').then(user => {
+//   console.log(user.toString());
+// })
