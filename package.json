@@ -1,6 +1,13 @@
 {
   "name": "feb-2021",
   "version": "7.6.2",
+  "scripts": {
+    "start": "node node/lesson11/app.js",
+    "dev": "pm2 kill && pm2 start node/lesson11/app.js --name L11 --watch",
+    "first": "npx sequelize-cli db:migrate && npm run dev",
+    "migrate:up": "npx sequelize-cli db:migrate",
+    "migrate:down": "npx sequelize-cli db:migrate:undo"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
@@ -15,6 +22,7 @@
     "nodemailer": "^6.6.2",
     "pug": "^3.0.2",
     "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
