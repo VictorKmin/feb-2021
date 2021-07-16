@@ -6,9 +6,13 @@
     "dev": "pm2 kill && pm2 start node/lesson11/app.js --name L11 --watch",
     "first": "npx sequelize-cli db:migrate && npm run dev",
     "migrate:up": "npx sequelize-cli db:migrate",
-    "migrate:down": "npx sequelize-cli db:migrate:undo"
+    "migrate:down": "npx sequelize-cli db:migrate:undo",
+    "test": "jest",
+    "coverage": "nyc npm run test"
   },
   "dependencies": {
+    "@sentry/node": "^6.9.0",
+    "@sentry/tracing": "^6.9.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "email-templates": "^8.0.7",
@@ -18,7 +22,9 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.0",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
+    "node-cron": "^3.0.0",
     "nodemailer": "^6.6.2",
     "pug": "^3.0.2",
     "sequelize": "^6.6.5",
@@ -34,8 +40,10 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "husky": "^4.3.0",
+    "jest": "^27.0.6",
     "lint-staged": "^10.5.2",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   },
   "lint-staged": {
     "*.{js, json}": [
